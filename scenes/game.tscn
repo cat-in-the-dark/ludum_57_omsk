@@ -16,7 +16,6 @@ sky_material = SubResource("ProceduralSkyMaterial_yqjtg")
 background_mode = 1
 sky = SubResource("Sky_lnu2h")
 reflected_light_source = 1
-tonemap_mode = 2
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_yqjtg"]
 

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dee1xiv180v6l"]
+
+[ext_resource type="PackedScene" uid="uid://budly3atyyd4w" path="res://models/textured_mesh.glb" id="1_jshad"]
+
+[node name="Tentacle" type="Node3D"]
+
+[node name="textured_mesh" parent="." instance=ExtResource("1_jshad")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3.96834, 1.13645)

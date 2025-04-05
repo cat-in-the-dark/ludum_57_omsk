@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://xjlgvs1kch8c"]
+[gd_scene load_steps=13 format=3 uid="uid://xjlgvs1kch8c"]
 
-[ext_resource type="PackedScene" uid="uid://vypfnecfhlti" path="res://player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://vypfnecfhlti" path="res://scenes/entities/player.tscn" id="1_uwrxv"]
 [ext_resource type="Material" uid="uid://bm1fxd0dorls" path="res://textures/debug_09_mat.tres" id="2_yqjtg"]
 [ext_resource type="Material" uid="uid://chbmp57xb0lk3" path="res://textures/debug_09_dark_mat.tres" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dee1xiv180v6l" path="res://scenes/entities/tentacle.tscn" id="4_lbhrr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yqjtg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -12,8 +13,9 @@ ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 sky_material = SubResource("ProceduralSkyMaterial_yqjtg")
 
 [sub_resource type="Environment" id="Environment_lbhrr"]
-background_mode = 2
+background_mode = 1
 sky = SubResource("Sky_lnu2h")
+reflected_light_source = 1
 tonemap_mode = 2
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_yqjtg"]
@@ -26,14 +28,19 @@ size = Vector3(2.01587, 1, 24.2854)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yqjtg"]
 size = Vector3(25.9814, 1, 1.9729)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_lbhrr"]
+size = Vector3(25.9924, 1, 1)
+
 [node name="Game" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lbhrr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(-0.866025, -0.433013, -0.25, 0, -0.5, 0.866025, -0.5, 0.75, 0.433013, 0, 26.0647, 0)
+light_energy = 0.8
 shadow_enabled = true
+sky_mode = 1
 
 [node name="Player 1" parent="." instance=ExtResource("1_uwrxv")]
 player_id = "1"
@@ -1120,3 +1127,12 @@ surface_material_override/0 = ExtResource("3_lnu2h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/bottom/body"]
 shape = SubResource("BoxShape3D_yqjtg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.69536)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D"]
+shape = SubResource("BoxShape3D_lbhrr")
+
+[node name="Tentacle" parent="." instance=ExtResource("4_lbhrr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.9705)

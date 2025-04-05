@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://vypfnecfhlti"]
+
+[ext_resource type="Script" uid="uid://d3jukx5kxuvn3" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://caam4ftvjsj0l" path="res://scenes/entities/godette_skin.tscn" id="2_onrkg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+
+[node name="Player" type="CharacterBody3D"]
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_onrkg")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 6.35831, 3.69542)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="GodetteSkin" parent="Pivot" instance=ExtResource("2_onrkg")]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://xjlgvs1kch8c"]
+
+[ext_resource type="PackedScene" uid="uid://vypfnecfhlti" path="res://player.tscn" id="1_uwrxv"]
+
+[node name="Game" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.12757e-08, -0.329147, 0.944279, -1.43875e-08, 0.944279, 0.329147, -1, 0, -4.37114e-08, 4.48847, 5.32296, 0)
+projection = 1
+size = 10.0
+
+[node name="Player 1" parent="." instance=ExtResource("1_uwrxv")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 7)
+player_id = "1"
+
+[node name="Player 2" parent="." instance=ExtResource("1_uwrxv")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, -7)
+player_id = "2"

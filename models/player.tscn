@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7mn6jjad5dt"]
+
+[ext_resource type="PackedScene" uid="uid://2susgfc7hpqi" path="res://models/player.fbx" id="1_cw8dn"]
+[ext_resource type="Material" uid="uid://i0w5j8r00dwd" path="res://textures/debug_05_mat.tres" id="2_l26u3"]
+
+[node name="player" instance=ExtResource("1_cw8dn")]
+
+[node name="Cone" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_l26u3")

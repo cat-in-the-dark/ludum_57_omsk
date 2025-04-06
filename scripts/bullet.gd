@@ -46,9 +46,9 @@ func fly_to_player(delta: float):
 	translate(dir * delta)
 	
 func fly_to_tentacle(delta: float):
-	var target_pos = tentacle.position
+	var target_pos = tentacle.global_position
 	target_pos.y += 3
-	var dir = position.direction_to(target_pos)
+	var dir = global_position.direction_to(target_pos)
 	translate(dir * delta * 10)
 	
 func _on_bullet_area_entered(area_rid, area: Area3D, area_shape_index, local_shape_index):
@@ -58,6 +58,7 @@ func _on_bullet_area_entered(area_rid, area: Area3D, area_shape_index, local_sha
 	
 	if not is_enemy and area is TentacleArea:
 		area.damage()
+		queue_free()
 	
 
 func _physics_process(delta: float):

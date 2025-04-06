@@ -7,9 +7,12 @@ extends CharacterBody3D
 @onready var move_right = "move_right_" + player_id
 @onready var move_forward = "move_forward_" + player_id
 @onready var move_back = "move_back_" + player_id
+@onready var attack = "attack_" + player_id
 
 @onready var skin = $Pivot/GodetteSkin
-@onready var pivot = $Pivot
+@onready var pivot: Node3D = $Pivot
+@onready var bat: Node3D = $Bat
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 var target_velocity = Vector3.ZERO
 
@@ -31,8 +34,11 @@ func move(delta):
 	velocity.x = vel_2d.x
 	velocity.z = vel_2d.y
 
+func handle_bat():
+	if Input.is_action_just_pressed(attack) and anim_player.current_animation != "attack":
+		anim_player.play("attack")
 
 func _physics_process(delta):
-	#handle_bat()
+	handle_bat()
 	move(delta)
 	move_and_slide()

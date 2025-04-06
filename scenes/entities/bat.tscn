@@ -1,6 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bno6h2hrc1q65"]
 
-[ext_resource type="Script" uid="uid://cpv1fnpkojf0b" path="res://scripts/bat.gd" id="1_1v8uf"]
+[sub_resource type="GDScript" id="GDScript_27efa"]
+script/source = "extends Node3D
+"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_08t41"]
 albedo_color = Color(0.0941176, 0.54902, 0.67451, 1)
@@ -16,7 +18,7 @@ radius = 0.3
 height = 2.57571
 
 [node name="Bat" type="Node3D"]
-script = ExtResource("1_1v8uf")
+script = SubResource("GDScript_27efa")
 
 [node name="BatMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.6368, 0.771638, 0)

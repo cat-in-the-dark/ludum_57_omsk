@@ -1145,6 +1145,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.60974, 1, -13.2815)
 
 [node name="Bullet3" parent="." instance=ExtResource("5_iywne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75716, 1, -16.1763)
+pattern = 2
 
 [node name="Bullet4" parent="." instance=ExtResource("5_iywne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75716, 1, -18.4358)
+pattern = 2

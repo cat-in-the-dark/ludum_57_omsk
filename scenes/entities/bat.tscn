@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bno6h2hrc1q65"]
+[gd_scene load_steps=5 format=3 uid="uid://bno6h2hrc1q65"]
+
+[ext_resource type="Script" uid="uid://dg7p4b67yh6qj" path="res://scripts/bat_area.gd" id="1_1v8uf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_08t41"]
 albedo_color = Color(0.0941176, 0.54902, 0.67451, 1)
@@ -21,6 +23,7 @@ mesh = SubResource("CylinderMesh_08t41")
 [node name="BatArea" type="Area3D" parent="BatMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.294003, 0)
 collision_layer = 2
+script = ExtResource("1_1v8uf")
 
 [node name="BatCollision" type="CollisionShape3D" parent="BatMesh/BatArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0203552, -0.0814819, -0.0280762)

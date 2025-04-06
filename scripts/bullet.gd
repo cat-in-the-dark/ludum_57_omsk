@@ -16,7 +16,6 @@ func setup_random_blink():
 func on_random_blink():
 	if not is_enemy:
 		return
-	print('BLINK')
 	setup_random_blink()
 	var dir = Vector3((randf()-0.5) * 8, 0, -5 * randf())
 	translate(dir)
@@ -53,7 +52,7 @@ func fly_to_tentacle(delta: float):
 	translate(dir * delta * 10)
 	
 func _on_bullet_area_entered(area_rid, area: Area3D, area_shape_index, local_shape_index):
-	if is_enemy:
+	if is_enemy and area is BatArea:
 		mesh.set_surface_override_material(0, my_material)
 		is_enemy = false
 	
@@ -67,6 +66,5 @@ func _physics_process(delta: float):
 	else:
 		fly_to_tentacle(delta)
 		
-	if position.z > 3:
-		print("bullet destroy ME")
+	if global_position.z > 3:
 		queue_free()

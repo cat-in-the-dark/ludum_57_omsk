@@ -4,14 +4,15 @@ class_name Spawner
 @export var bullet_scene: PackedScene
 @export var pattern = 0
 @export var n_bulets = 1
+@export var bullets_root: Node3D
 
 var spawned_bullets = 0
 
 func spawn_bullet():
 	var bullet: Bullet = bullet_scene.instantiate()
-	bullet.position = global_position
 	bullet.pattern = pattern
-	get_tree().root.add_child(bullet)
+	bullets_root.add_child(bullet)
+	bullet.global_position = global_position
 
 func _on_timer_timeout():
 	if spawned_bullets >= n_bulets:

@@ -87,11 +87,12 @@ script = ExtResource("5_wxpan")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225708, 3.66815, 0.619568)
 shape = SubResource("BoxShape3D_5pi8u")
 
-[node name="Spawner" parent="." instance=ExtResource("3_ck0rm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3.007)
+[node name="Spawner" parent="." node_paths=PackedStringArray("bullets_root") instance=ExtResource("3_ck0rm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3)
 bullet_scene = ExtResource("4_5pi8u")
 pattern = 1
 n_bulets = 2
+bullets_root = NodePath("../bullets")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -102,5 +103,7 @@ libraries = {
 
 [node name="textured_mesh" parent="pivot" instance=ExtResource("1_jshad")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3.96834, 1.13645)
+
+[node name="bullets" type="Node3D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_spawn"]

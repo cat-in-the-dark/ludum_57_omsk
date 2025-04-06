@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://xjlgvs1kch8c"]
+[gd_scene load_steps=14 format=3 uid="uid://xjlgvs1kch8c"]
 
+[ext_resource type="Script" uid="uid://cvplgmd4xvqd7" path="res://scenes/game.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://vypfnecfhlti" path="res://scenes/entities/player.tscn" id="1_uwrxv"]
 [ext_resource type="Material" uid="uid://bm1fxd0dorls" path="res://textures/debug_09_mat.tres" id="2_yqjtg"]
 [ext_resource type="Material" uid="uid://chbmp57xb0lk3" path="res://textures/debug_09_dark_mat.tres" id="3_lnu2h"]
@@ -31,6 +32,7 @@ size = Vector3(25.9814, 1, 1.9729)
 size = Vector3(25.9924, 1, 1)
 
 [node name="Game" type="Node3D"]
+script = ExtResource("1_iywne")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_lbhrr")

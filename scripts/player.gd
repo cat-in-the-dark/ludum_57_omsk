@@ -36,7 +36,6 @@ func move(delta):
 
 func handle_bat():
 	if Input.is_action_just_pressed(attack) and anim_player.current_animation != "attack":
-		print(pivot.rotation.y)
 		if pivot.rotation.y > 0 && pivot.rotation.y < PI:
 			anim_player.play("attack_right")
 		else:

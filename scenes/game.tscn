@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://xjlgvs1kch8c"]
+[gd_scene load_steps=13 format=3 uid="uid://xjlgvs1kch8c"]
 
 [ext_resource type="PackedScene" uid="uid://vypfnecfhlti" path="res://scenes/entities/player.tscn" id="1_uwrxv"]
 [ext_resource type="Material" uid="uid://bm1fxd0dorls" path="res://textures/debug_09_mat.tres" id="2_yqjtg"]
 [ext_resource type="Material" uid="uid://chbmp57xb0lk3" path="res://textures/debug_09_dark_mat.tres" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dee1xiv180v6l" path="res://scenes/entities/tentacle.tscn" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://c78iybl1pbweu" path="res://scenes/entities/bullet.tscn" id="5_iywne"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yqjtg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -1135,18 +1134,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.69536)
 shape = SubResource("BoxShape3D_lbhrr")
 
 [node name="Tentacle" parent="." groups=["tentacle"] instance=ExtResource("4_lbhrr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.9705)
-
-[node name="Bullet" parent="." instance=ExtResource("5_iywne")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53165, 1, -10.5141)
-
-[node name="Bullet2" parent="." instance=ExtResource("5_iywne")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.60974, 1, -13.2815)
-
-[node name="Bullet3" parent="." instance=ExtResource("5_iywne")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75716, 1, -16.1763)
-pattern = 2
-
-[node name="Bullet4" parent="." instance=ExtResource("5_iywne")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75716, 1, -18.4358)
-pattern = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.5608)

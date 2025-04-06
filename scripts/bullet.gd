@@ -1,8 +1,11 @@
 extends Node3D
 class_name Bullet
 
+@export var my_material: StandardMaterial3D
 @export var pattern: int = 0 
 @onready var tentacle: Node3D = get_tree().get_nodes_in_group("tentacle")[0]
+@onready var mesh: MeshInstance3D = $MeshInstance3D
+
 var is_enemy: bool = true
 var accum_time = 0
 
@@ -36,21 +39,26 @@ func move_fn_linear() -> Vector3:
 func move_random_blink() -> Vector3:
 	return move_fn_linear()
 
-var functions = [move_fn_sin, move_fn_linear, move_random_blink]
+var patterns = [move_fn_sin, move_fn_linear, move_random_blink]
 
 func fly_to_player(delta: float):
 	accum_time += delta
-	var dir = functions[pattern].call()
+	var dir = patterns[pattern % patterns.size()].call()
 	translate(dir * delta)
 	
 func fly_to_tentacle(delta: float):
-	var dir = position.direction_to(tentacle.position)
+	var target_pos = tentacle.position
+	target_pos.y += 3
+	var dir = position.direction_to(target_pos)
 	translate(dir * delta * 10)
 	
-func _on_bullet_area_entered(area_rid, area, area_shape_index, local_shape_index):
+func _on_bullet_area_entered(area_rid, area: Area3D, area_shape_index, local_shape_index):
 	if is_enemy:
+		mesh.set_surface_override_material(0, my_material)
 		is_enemy = false
-		print('BUM')
+	
+	if not is_enemy and area is TentacleArea:
+		area.damage()
 	
 
 func _physics_process(delta: float):
@@ -58,3 +66,7 @@ func _physics_process(delta: float):
 		fly_to_player(delta)
 	else:
 		fly_to_tentacle(delta)
+		
+	if position.z > 3:
+		print("bullet destroy ME")
+		queue_free()

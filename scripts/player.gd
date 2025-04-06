@@ -11,7 +11,7 @@ extends CharacterBody3D
 
 @onready var skin = $Pivot/GodetteSkin
 @onready var pivot: Node3D = $Pivot
-@onready var bat: Node3D = $Bat
+@onready var bat: Node3D = $Pivot/Bat
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 var target_velocity = Vector3.ZERO
@@ -36,7 +36,11 @@ func move(delta):
 
 func handle_bat():
 	if Input.is_action_just_pressed(attack) and anim_player.current_animation != "attack":
-		anim_player.play("attack")
+		print(pivot.rotation.y)
+		if pivot.rotation.y > 0 && pivot.rotation.y < PI:
+			anim_player.play("attack_right")
+		else:
+			anim_player.play("attack")
 
 func _physics_process(delta):
 	handle_bat()

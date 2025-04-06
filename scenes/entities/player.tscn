@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vypfnecfhlti"]
+[gd_scene load_steps=9 format=3 uid="uid://vypfnecfhlti"]
 
 [ext_resource type="Script" uid="uid://d3jukx5kxuvn3" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://caam4ftvjsj0l" path="res://scenes/entities/godette_skin.tscn" id="2_onrkg"]
@@ -8,42 +8,42 @@
 
 [sub_resource type="Animation" id="Animation_1ie0h"]
 resource_name = "attack"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Bat:rotation")
+tracks/0/path = NodePath("Pivot/Bat/BatMesh/BatArea/BatCollision:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector3(0, 0.262986, 0), Vector3(0.00789238, -3.12603, -0.469188)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Bat/BatMesh/BatArea/BatCollision:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Bat:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Bat:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Bat:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.307786, 1),
+"update": 0,
+"values": [Vector3(0, 3.12414, 0), Vector3(0, 0.0174533, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_42nxq"]
@@ -51,44 +51,85 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Bat:rotation")
+tracks/0/path = NodePath("Pivot/Bat/BatMesh/BatArea/BatCollision:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -0.0174533, 0)]
+"update": 1,
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Bat/BatMesh/BatArea/BatCollision:disabled")
+tracks/1/path = NodePath("Pivot/Bat:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Bat:visible")
+tracks/2/path = NodePath("Pivot/Bat:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.12414, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5u6hq"]
+resource_name = "attack_right"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Bat:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.307786, 1),
+"update": 0,
+"values": [Vector3(0, 0.0174533, 0), Vector3(0, 3.12414, -0.261799)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Bat:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Bat/BatMesh/BatArea/BatCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5u6hq"]
 _data = {
 &"RESET": SubResource("Animation_42nxq"),
-&"attack": SubResource("Animation_1ie0h")
+&"attack": SubResource("Animation_1ie0h"),
+&"attack_right": SubResource("Animation_5u6hq")
 }
 
 [node name="Player" type="CharacterBody3D"]
@@ -104,21 +145,20 @@ transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_sh265")
 
-[node name="Bat" parent="." instance=ExtResource("3_1ie0h")]
-transform = Transform3D(0.999848, 0, -0.0174524, 0, 1, 0, 0.0174524, 0, 0.999848, 0, 0, 0)
-visible = false
-script = null
-
-[node name="BatCollision" parent="Bat/BatMesh/BatArea" index="0"]
-disabled = true
-
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="GodetteSkin" parent="Pivot" instance=ExtResource("2_onrkg")]
+
+[node name="Bat" parent="Pivot" instance=ExtResource("3_1ie0h")]
+transform = Transform3D(-0.999848, 0, 0.0174525, 0, 1, 0, -0.0174525, 0, -0.999848, 0, 0, 0)
+visible = false
+
+[node name="BatCollision" parent="Pivot/Bat/BatMesh/BatArea" index="0"]
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_5u6hq")
 }
 
-[editable path="Bat"]
+[editable path="Pivot/Bat"]

@@ -1,10 +1,106 @@
-[gd_scene load_steps=3 format=3 uid="uid://dee1xiv180v6l"]
+[gd_scene load_steps=10 format=3 uid="uid://dee1xiv180v6l"]
 
 [ext_resource type="Script" uid="uid://2pvf8k32aur2" path="res://scripts/tentacle.gd" id="1_11r6p"]
 [ext_resource type="PackedScene" uid="uid://budly3atyyd4w" path="res://models/textured_mesh.glb" id="1_jshad"]
+[ext_resource type="PackedScene" uid="uid://dm6rccfp8x8n3" path="res://scenes/entities/spawner.tscn" id="3_ck0rm"]
+[ext_resource type="PackedScene" uid="uid://c78iybl1pbweu" path="res://scenes/entities/bullet.tscn" id="4_5pi8u"]
+[ext_resource type="Script" uid="uid://ddbffu7itbv8y" path="res://scripts/tentacle_area.gd" id="5_wxpan"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5pi8u"]
+size = Vector3(8.954, 8.336, 1)
+
+[sub_resource type="Animation" id="Animation_wxpan"]
+resource_name = "damaged"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.197397, 0, 0), Vector3(0.0872665, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hbtx1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hbtx1"]
+_data = {
+&"RESET": SubResource("Animation_hbtx1"),
+&"damaged": SubResource("Animation_wxpan")
+}
 
 [node name="Tentacle" type="Node3D"]
 script = ExtResource("1_11r6p")
+spawner_scene = ExtResource("3_ck0rm")
+bullet_scene = ExtResource("4_5pi8u")
 
-[node name="textured_mesh" parent="." instance=ExtResource("1_jshad")]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+script = ExtResource("5_wxpan")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225708, 3.66815, 0.619568)
+shape = SubResource("BoxShape3D_5pi8u")
+
+[node name="Spawner" parent="." instance=ExtResource("3_ck0rm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3.007)
+bullet_scene = ExtResource("4_5pi8u")
+pattern = 1
+n_bulets = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hbtx1")
+}
+
+[node name="pivot" type="Node3D" parent="."]
+
+[node name="textured_mesh" parent="pivot" instance=ExtResource("1_jshad")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3.96834, 1.13645)
+
+[connection signal="timeout" from="Timer" to="." method="_on_spawn"]

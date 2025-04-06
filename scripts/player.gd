@@ -9,6 +9,7 @@ extends CharacterBody3D
 @onready var move_back = "move_back_" + player_id
 
 @onready var skin = $Pivot/GodetteSkin
+@onready var pivot = $Pivot
 
 var target_velocity = Vector3.ZERO
 
@@ -22,15 +23,16 @@ func move(delta):
 		skin.set_move_state('Running')
 		
 		var target_angle = movement_input.angle()
-		skin.rotation.y = PI/2 - target_angle
+		pivot.rotation.y = PI/2 - target_angle
 	else:
 		vel_2d = vel_2d.move_toward(Vector2.ZERO, speed * 4.0 * delta)
 		skin.set_move_state('Idle')
 
 	velocity.x = vel_2d.x
 	velocity.z = vel_2d.y
-		
+
 
 func _physics_process(delta):
+	#handle_bat()
 	move(delta)
 	move_and_slide()

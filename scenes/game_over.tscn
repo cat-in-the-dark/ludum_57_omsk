@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvpfprk0fl2he"]
+
+[ext_resource type="Script" uid="uid://ggo58r58tl3h" path="res://scripts/game_over.gd" id="1_tbwuq"]
+[ext_resource type="PackedScene" uid="uid://budly3atyyd4w" path="res://models/textured_mesh.glb" id="1_wqhvx"]
+[ext_resource type="PackedScene" uid="uid://caam4ftvjsj0l" path="res://scenes/entities/godette_skin.tscn" id="2_tbwuq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_racf3"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_l1273"]
+sky_material = SubResource("ProceduralSkyMaterial_racf3")
+
+[sub_resource type="Environment" id="Environment_7m3ot"]
+background_mode = 1
+background_color = Color(0.0200553, 0.346494, 0.467905, 1)
+sky = SubResource("Sky_l1273")
+tonemap_mode = 2
+
+[node name="GameOver" type="Node3D"]
+script = ExtResource("1_tbwuq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7m3ot")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0.498857, -0.714437, 0.490633, -0.0338424, 0.549615, 0.834733, 0, 2.95163, 5.66209)
+light_energy = 0.3
+shadow_enabled = true
+
+[node name="textured_mesh" parent="." instance=ExtResource("1_wqhvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2697, 0)
+
+[node name="GodetteSkin" parent="." instance=ExtResource("2_tbwuq")]
+transform = Transform3D(1, 0, 0, 0, 0.9243, -0.381667, 0, 0.381667, 0.9243, 0, -0.893, -0.717928)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.959072, -0.283162, 0, 0.283162, 0.959072, 0, 0, 2.83345)

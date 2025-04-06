@@ -1,7 +1,9 @@
 extends Node3D
+class_name Tentacle
 
 @export var spawner_scene: PackedScene
 @export var bullet_scene: PackedScene
+@export var ScoreHud: RichTextLabel
 
 func _on_spawn():
 	var spawner: Spawner = spawner_scene.instantiate()

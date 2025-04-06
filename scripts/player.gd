@@ -1,5 +1,7 @@
 extends CharacterBody3D
+class_name Player
 
+@export var HP_HUD: RichTextLabel
 @export var player_id: String = "-1"
 @export var speed = 7
 
@@ -15,6 +17,7 @@ extends CharacterBody3D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 var target_velocity = Vector3.ZERO
+var hp = 3
 
 func move(delta):
 	var movement_input = Input.get_vector(move_left, move_right, move_forward, move_back)
@@ -40,6 +43,15 @@ func handle_bat():
 			anim_player.play("attack_right")
 		else:
 			anim_player.play("attack")
+
+func _ready():
+	HP_HUD.text = "MY HP: %d" % hp
+
+func damage():
+	hp -= 1
+	HP_HUD.text = "MY HP: %d" % hp
+	if hp <= 0:
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func _physics_process(delta):
 	handle_bat()

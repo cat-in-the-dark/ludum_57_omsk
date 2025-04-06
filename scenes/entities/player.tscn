@@ -6,6 +6,45 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
+[sub_resource type="Animation" id="Animation_42nxq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Bat/BatMesh/BatArea/BatCollision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Bat:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Bat:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.12414, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_1ie0h"]
 resource_name = "attack"
 length = 0.3
@@ -44,45 +83,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(0.307786, 1),
 "update": 0,
 "values": [Vector3(0, 3.12414, 0), Vector3(0, 0.0174533, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_42nxq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot/Bat/BatMesh/BatArea/BatCollision:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Pivot/Bat:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Pivot/Bat:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.12414, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_5u6hq"]
@@ -133,6 +133,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 9
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -150,7 +151,7 @@ shape = SubResource("CapsuleShape3D_sh265")
 [node name="GodetteSkin" parent="Pivot" instance=ExtResource("2_onrkg")]
 
 [node name="Bat" parent="Pivot" instance=ExtResource("3_1ie0h")]
-transform = Transform3D(-0.999848, 0, 0.0174525, 0, 1, 0, -0.0174525, 0, -0.999848, 0, 0, 0)
+transform = Transform3D(-0.999848, 0, 0.0174517, 0, 1, 0, -0.0174517, 0, -0.999848, 0, 0, 0)
 visible = false
 
 [node name="BatCollision" parent="Pivot/Bat/BatMesh/BatArea" index="0"]

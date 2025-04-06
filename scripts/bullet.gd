@@ -69,3 +69,8 @@ func _physics_process(delta: float):
 		
 	if global_position.z > 3:
 		queue_free()
+
+
+func _on_area_3d_body_entered(body):
+	if body is Player:
+		body.damage()

@@ -43,7 +43,8 @@ light_energy = 0.8
 shadow_enabled = true
 sky_mode = 1
 
-[node name="Player 1" parent="." groups=["player"] instance=ExtResource("1_uwrxv")]
+[node name="Player 1" parent="." node_paths=PackedStringArray("HP_HUD") groups=["player"] instance=ExtResource("1_uwrxv")]
+HP_HUD = NodePath("../HP")
 player_id = "1"
 
 [node name="Floor" type="Node3D" parent="."]
@@ -1135,5 +1136,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.69536)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D"]
 shape = SubResource("BoxShape3D_lbhrr")
 
-[node name="Tentacle" parent="." groups=["tentacle"] instance=ExtResource("4_lbhrr")]
+[node name="Tentacle" parent="." node_paths=PackedStringArray("ScoreHud") groups=["tentacle"] instance=ExtResource("4_lbhrr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.5608)
+ScoreHud = NodePath("../SCORE")
+
+[node name="SCORE" type="RichTextLabel" parent="."]
+offset_right = 107.0
+offset_bottom = 44.0
+text = "HIS HP: 0"
+
+[node name="HP" type="RichTextLabel" parent="."]
+clip_contents = false
+offset_left = 531.0
+offset_top = 3.0
+offset_right = 621.0
+offset_bottom = 43.0
+text = "MY HP: 3"
